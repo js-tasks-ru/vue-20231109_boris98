@@ -35,10 +35,10 @@
         </div>
 
         <div class="col" style="display: flex; flex-direction: column; font-family: emoji">
-          <label><input type="radio" name="operator" value="sum" v-model="checkedFunc"/> ➕</label>
-          <label><input type="radio" name="operator" value="subtract" v-model="checkedFunc"/> ➖</label>
-          <label><input type="radio" name="operator" value="multiply" v-model="checkedFunc" /> ✖</label>
-          <label><input type="radio" name="operator" value="divide" v-model="checkedFunc"/> ➗</label>
+          <label><input type="radio" name="operator" value="sum" v-model="checkedFunc"  @change="calcResult"/> ➕</label>
+          <label><input type="radio" name="operator" value="subtract" v-model="checkedFunc"  @change="calcResult"/> ➖</label>
+          <label><input type="radio" name="operator" value="multiply" v-model="checkedFunc"  @change="calcResult"/> ✖</label>
+          <label><input type="radio" name="operator" value="divide" v-model="checkedFunc"  @change="calcResult"/> ➗</label>
         </div>
 
         <div class="col">
