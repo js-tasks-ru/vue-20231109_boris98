@@ -19,6 +19,6 @@ export default defineComponent({
   },
 
   template: `<button type="button"  
-  @click="counterIncrement()"
+  @click="counterIncrement"
   >{{ count }}</button>`,
 });
