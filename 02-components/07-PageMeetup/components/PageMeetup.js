@@ -31,7 +31,7 @@ export default defineComponent({
   data() {
     return {
       meetup: null,
-      isError: false,
+      isError: '',
     };
   },
   methods: {
@@ -40,9 +40,9 @@ export default defineComponent({
 		this.meetup = null;
         const response = await fetchMeetupById(id);
         this.meetup = response;
-        this.isError = false;
-      } catch (Error) {
-        this.isError = true;
+        this.isError = '';
+      } catch (error) {
+        this.isError = 'Test Error';
       }
     },
   },
@@ -59,12 +59,12 @@ export default defineComponent({
 
 	<MeetupView v-if="meetup && !isError" :meetup="meetup" />
 
-      <UiContainer>
-        <UiAlert  v-if="!isError && !meetup">Загрузка...</UiAlert>
+      <UiContainer v-if="!isError && !meetup">
+        <UiAlert >Загрузка...</UiAlert>
       </UiContainer>
 
-      <UiContainer>
-        <UiAlert v-if="isError">Test Error</UiAlert>
+      <UiContainer v-if="isError">
+        <UiAlert>{{ isError }}</UiAlert>
       </UiContainer>
     </div>`,
 });
