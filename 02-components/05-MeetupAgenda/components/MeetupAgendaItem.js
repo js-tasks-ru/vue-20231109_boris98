@@ -11,8 +11,7 @@ export default defineComponent({
   },
   computed: {
     imageType() {
-      const imgSrc = '/assets/icons/' + agendaItemIcons[this.agendaItem.type] + '.svg';
-      return imgSrc;
+      return '/assets/icons/' + agendaItemIcons[this.agendaItem.type] + '.svg';
     },
     defaultTitle() {
       return agendaItemDefaultTitles[this.agendaItem.type];
@@ -24,10 +23,7 @@ export default defineComponent({
       <div class="agenda-item__col">
 		<img :src="imageType" class="icon" alt="key">
       </div>
-      <div class="agenda-item__col">{{agendaItem.startsAt}} - {{agendaItem.endsAt
-		
-	
-	}}</div>
+      <div class="agenda-item__col">{{agendaItem.startsAt}} - {{agendaItem.endsAt}}</div>
       <div class="agenda-item__col">
         <h3 class="agenda-item__title">{{ agendaItem.title ? agendaItem.title : defaultTitle }}</h3>
         <p class="agenda-item__talk" v-if="agendaItem.type === 'talk'">

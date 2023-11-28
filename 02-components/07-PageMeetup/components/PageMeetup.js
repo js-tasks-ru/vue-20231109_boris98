@@ -42,7 +42,7 @@ export default defineComponent({
         this.meetup = response;
         this.isError = '';
       } catch (error) {
-        this.isError = 'Test Error';
+        this.isError = error.message;
       }
     },
   },
