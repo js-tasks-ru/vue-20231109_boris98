@@ -11,7 +11,7 @@ export default defineComponent({
   },
   computed: {
     imageType() {
-      return '/assets/icons/' + agendaItemIcons[this.agendaItem.type] + '.svg';
+      return '/assets/icons/icon-' + agendaItemIcons[this.agendaItem.type] + '.svg';
     },
     defaultTitle() {
       return agendaItemDefaultTitles[this.agendaItem.type];
