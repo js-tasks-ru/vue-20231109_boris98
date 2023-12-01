@@ -15,32 +15,24 @@ export default {
 			type: String,
 		},
 	},
-	computed:
-	{
-		coverImage() {
-			if (this.image) {
-				return `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('${this.image}')`;
-			}
-			else {
-				return 'linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--default-cover)';
-			}
-		}
-	}
 };
 </script>
 
 <style scoped>
 .meetup-cover {
-	background-size: cover;
-	background-position: center;
-	background-image: v-bind(coverImage);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 410px;
-	max-width: 1216px;
-	margin: 0 auto;
+  --image: v-bind('image ? "url(" + image + ")" : "var(--default-cover)"');
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('https://course-vue.javascript.ru/api/images/2');
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--image);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 410px;
+  max-width: 1216px;
+  margin: 0 auto;
 }
 
 .meetup-cover__title {
