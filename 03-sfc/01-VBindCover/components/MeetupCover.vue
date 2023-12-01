@@ -1,22 +1,31 @@
 <template>
-  <div class="meetup-cover">
-    <h1 class="meetup-cover__title">Title</h1>
-  </div>
+	<div class="meetup-cover">
+		<h1 class="meetup-cover__title">{{ title }}</h1>
+	</div>
 </template>
 
 <script>
 export default {
-  name: 'MeetupCover',
+	name: 'MeetupCover',
+	props: {
+		title: {
+			type: String,
+		},
+		image: {
+			type: String,
+		},
+	},
 };
 </script>
 
 <style scoped>
 .meetup-cover {
+  --image: v-bind('image ? "url(" + image + ")" : "var(--default-cover)"');
   background-size: cover;
   background-position: center;
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url('https://course-vue.javascript.ru/api/images/2');
-  /* background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--default-cover); */
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--image);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,19 +36,19 @@ export default {
 }
 
 .meetup-cover__title {
-  color: var(--white);
-  font-family: Roboto, sans-serif;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 48px;
-  padding: 0 16px;
-  text-align: center;
+	color: var(--white);
+	font-family: Roboto, sans-serif;
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 48px;
+	padding: 0 16px;
+	text-align: center;
 }
 
 @media all and (min-width: 992px) {
-  .meetup-cover__title {
-    font-size: 72px;
-    line-height: 84px;
-  }
+	.meetup-cover__title {
+		font-size: 72px;
+		line-height: 84px;
+	}
 }
 </style>
