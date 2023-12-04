@@ -52,8 +52,6 @@ export default {
   data() {
     return {
       date: new Date(),
-      //date: new Date(2023, 2, 10)
-      //date: new Date(2023, 0, 1),
     };
   },
   computed: {
