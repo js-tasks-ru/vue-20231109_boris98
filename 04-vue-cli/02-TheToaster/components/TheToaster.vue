@@ -3,9 +3,10 @@
 </template>
 
 <script>
-import UiToastsList from './UiToastsList.vue';
 
 const DEFAULT_CLOSE_TIMER = 5000;
+
+import UiToastsList from './UiToastsList.vue';
 
 let toastId = 0;
 
