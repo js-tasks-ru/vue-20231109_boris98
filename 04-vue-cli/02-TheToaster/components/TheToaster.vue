@@ -1,9 +1,8 @@
 <template>
-  <UiToastsList :toasts="toasts" @remove-toast="removeToastById" />
+  <UiToastsList :toasts="toasts" @remove-toast="removeToast" />
 </template>
 
 <script>
-
 const DEFAULT_CLOSE_TIMER = 5000;
 
 import UiToastsList from './UiToastsList.vue';
@@ -26,17 +25,31 @@ export default {
     success(message) {
       this.addToast(message, 'success');
     },
-    setRemoveTimer(ms) {
-      setTimeout(() => {
-        this.toasts.shift();
+    setTimer(id, ms) {
+      const timerId = setTimeout(() => {
+        this.removeToast(id);
       }, ms);
+      return timerId;
     },
-    removeToastById(id) {
-      this.toasts = this.toasts.filter((toast) => toast.id !== id);
+    removeToast(id) {
+      this.removeTimer(id);
+      const index = this.toasts.findIndex((toast) => toast.id === id);
+      if (index !== -1) {
+        this.toasts.splice(index, 1);
+      }
+    },
+    removeTimer(id) {
+      const index = this.toasts.findIndex((toast) => toast.id === id);
+      if (index !== -1) {
+        const timerId = this.toasts[index].timerId;
+        clearTimeout(timerId);
+      }
     },
     addToast(message, type) {
-      this.toasts.push({ type, message, id: ++toastId });
-      this.setRemoveTimer(DEFAULT_CLOSE_TIMER);
+      const newToast = { type, message, id: toastId };
+      newToast.timerId = this.setTimer(newToast.id, DEFAULT_CLOSE_TIMER);
+      this.toasts.push(newToast);
+      toastId++;
     },
   },
 };
