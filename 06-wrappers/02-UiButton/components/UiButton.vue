@@ -18,7 +18,7 @@ export default {
     variant: {
       type: String,
       default: 'secondary',
-	  validator: (value) => buttonVariants.includes(value),
+      validator: (value) => buttonVariants.includes(value),
     },
     block: {
       type: Boolean,
