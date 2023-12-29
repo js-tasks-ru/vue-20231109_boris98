@@ -8,4 +8,9 @@ import { computed } from 'vue';
 export function reactify(func) {
   // ...
   // return () => computed(() => {});
+  return (...args) =>
+  computed(() => {
+	const values = args.map((arg) => (arg.value === undefined ? arg : arg.value));
+	return func(...values);
+  });
 }
