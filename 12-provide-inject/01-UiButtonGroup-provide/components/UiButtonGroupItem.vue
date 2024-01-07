@@ -1,5 +1,13 @@
 <template>
-  <button class="button-group__button button-group__button_active" type="button" aria-selected="false">Button</button>
+  <button
+    class="button-group__button"
+    :class="{ 'button-group__button_active': isActive }"
+    @click="handleClick"
+    type="button"
+    aria-selected="false"
+  >
+    <slot />
+  </button>
 </template>
 
 <script>
@@ -9,6 +17,19 @@ export default {
   props: {
     value: {
       required: true,
+    },
+  },
+  inject: ['selectedItem', 'selectItem'],
+
+  computed: {
+    isActive() {
+      return this.value === this.selectedItem;
+    },
+  },
+
+  methods: {
+    handleClick() {
+      this.selectItem(this.value);
     },
   },
 };
